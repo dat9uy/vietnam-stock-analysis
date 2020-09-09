@@ -1,0 +1,15 @@
+[run]
+omit = 
+    # omit virtualenv folder
+    .venv/*
+
+    # omit tests folder
+    tests/*
+
+    # omit IDE config
+    .idea/*
+    .vscode*
+
+    # omit scratchpad
+    scratchpad.py
+    

@@ -1,6 +1,12 @@
+# IDE config
 .venv/
 .idea/
 .vscode/
-__pycache__/
 
+# Python
+__pycache__/
+.pytest_cache/
+.coverage
+
+# scratchpad
 scratchpad.py

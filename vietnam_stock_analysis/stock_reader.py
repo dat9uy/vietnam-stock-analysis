@@ -6,6 +6,10 @@ import pandas as pd
 import pytz
 from pandas.core.frame import DataFrame
 
+from pandera import check_output
+
+from ._dataframe_schema import stock_data_schema
+
 
 def _get_date_string(
     days_from_now: int = None, from_date: str = None, to_date: str = None
@@ -59,9 +63,10 @@ def _get_date_string(
     return from_date, to_date
 
 
+@check_output(stock_data_schema)
 def ticker_data_reader(
     name: str, *, days_from_now: str = None, from_date: str = None, to_date: str = None
-) -> DataFrame:
+) -> DataFrame:  # pragma: no cover
     """Đọc dữ liệu ticker từ investing.com"""
     name = name.upper()
     from_date, to_date = _get_date_string(days_from_now, from_date, to_date)
@@ -74,9 +79,10 @@ def ticker_data_reader(
     return df
 
 
+@check_output(stock_data_schema)
 def ticker_group_data_reader(
     ticker_group: List[str], *, days_from_now: str = None, from_date: str = None, to_date=None
-) -> DataFrame:
+) -> DataFrame:  # pragma: no cover
     """Đọc dữ liệu ticker theo nhóm"""
     group_df = pd.DataFrame()
 
@@ -90,7 +96,7 @@ def ticker_group_data_reader(
     return group_df
 
 
-class TickerGroup:
+class TickerGroup:  # pragma: no cover
     """Class gộp nhóm ticker và các tính toán tóm tắt cho nhóm"""
 
     def __init__(
