@@ -159,8 +159,8 @@ class StockAnalyzer:
 
         Returns
         -------
-        [type]
-            [description]
+        float
+            Hệ số alpha
         """
         r_f /= 100
         r_m = self.port_return(index)
