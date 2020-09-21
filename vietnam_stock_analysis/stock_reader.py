@@ -65,7 +65,7 @@ def _get_date_string(
 
 @check_output(stock_data_schema)
 def ticker_data_reader(
-    name: str, *, days_from_now: str = None, from_date: str = None, to_date: str = None
+    name: str, *, days_from_now: int = None, from_date: str = None, to_date: str = None
 ) -> DataFrame:  # pragma: no cover
     """Đọc dữ liệu ticker từ investing.com"""
     name = name.upper()
@@ -81,7 +81,7 @@ def ticker_data_reader(
 
 @check_output(stock_data_schema)
 def ticker_group_data_reader(
-    ticker_group: List[str], *, days_from_now: str = None, from_date: str = None, to_date=None
+    ticker_group: List[str], *, days_from_now: int = None, from_date: str = None, to_date=None
 ) -> DataFrame:  # pragma: no cover
     """Đọc dữ liệu ticker theo nhóm"""
     group_df = pd.DataFrame()
