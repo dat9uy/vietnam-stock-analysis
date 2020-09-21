@@ -38,12 +38,12 @@ class StockAnalyzer:
         return self._data.last("1D")["High"].iat[0]
 
     @property
-    def last_low(self):
+    def last_low(self) -> float:
         """Giá thấp nhất ngày cuối cùng"""
         return self._data.last("1D")["Low"].iat[0]
 
     @property
-    def pivot_point(self):
+    def pivot_point(self) -> float:
         """Tính pivot point để tìm mức hỗ trợ/kháng cự"""
         return (self.last_close + self.last_high + self.last_low) / 3
 

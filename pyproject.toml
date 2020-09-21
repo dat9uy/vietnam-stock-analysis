@@ -9,6 +9,7 @@ python = "^3.8"
 investpy = "^1.0"
 pandas = "^1.1.1"
 pandera = "^0.4.4"
+plotly = "^4.10.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
