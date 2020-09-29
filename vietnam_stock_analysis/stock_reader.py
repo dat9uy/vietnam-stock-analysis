@@ -9,6 +9,7 @@ from pandas.core.frame import DataFrame
 from pandera import check_output
 
 from ._dataframe_schema import stock_data_schema
+from .domain.symbol import StockRecords
 
 
 def _get_date_string(
@@ -63,10 +64,9 @@ def _get_date_string(
     return from_date, to_date
 
 
-@check_output(stock_data_schema)
 def ticker_data_reader(
     name: str, *, days_from_now: int = None, from_date: str = None, to_date: str = None
-) -> DataFrame:  # pragma: no cover
+) -> StockRecords:  # pragma: no cover
     """Đọc dữ liệu ticker từ investing.com"""
     name = name.upper()
     from_date, to_date = _get_date_string(days_from_now, from_date, to_date)
@@ -76,7 +76,9 @@ def ticker_data_reader(
     )
     df["name"] = name
 
-    return df
+    stock_data_schema.validate(df)
+
+    return StockRecords(symbol=name, date=(from_date, to_date), data=df)
 
 
 @check_output(stock_data_schema)
